@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-page: #000000;
+  --bg-surface: #0a0a0a;
+  --bg-surface-hover: #171717;
+  --border-surface: rgba(255, 255, 255, 0.08);
+  --text-main: #f8fafc;
+  --text-muted: #a1a1aa;
+  --text-subtle: #71717a;
+  --brand-primary: #f97316;
+  --brand-primary-hover: #ea580c;
+  --brand-tint: rgba(249, 115, 22, 0.15);
+  --brand-secondary: #eab308;
+  --badge-bg: rgba(249, 115, 22, 0.1);
+  --badge-text: #fdba74;
+  --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.9), 0 8px 10px -6px rgba(0, 0, 0, 0.8);
+  --hero-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.98) 100%);
+}
+
+.light {
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f1f5f9;
+  --border-surface: rgba(226, 232, 240, 0.8);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+  --brand-primary: #ea580c;
+  --brand-primary-hover: #c2410c;
+  --brand-tint: rgba(234, 88, 12, 0.08);
+  --brand-secondary: #ca8a04;
+  --badge-bg: #fff7ed;
+  --badge-text: #c2410c;
+  --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  --hero-overlay: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(248, 250, 252, 1) 100%);
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Custom Brand Typography */
+.brand-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Effect */
+.glass-panel {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-surface);
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Badge & Pills */
+.pill-active {
+  background-color: var(--brand-primary);
+  color: #0f172a !important;
+  border-color: var(--brand-primary);
+}
+
+/* Custom Card Hover Effects */
+.food-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-surface);
+}
+
+.food-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-primary);
+  box-shadow: var(--card-shadow);
+}
+
+/* PURE BLACK DARK MODE OVERRIDES */
+html.dark body {
+  background-color: #000000 !important;
+  color: #f8fafc !important;
+}
+
+html.dark header {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  border-color: #171717 !important;
+}
+
+html.dark footer {
+  background-color: #000000 !important;
+  border-color: #171717 !important;
+}
+
+html.dark .food-card,
+html.dark .glass-panel,
+html.dark #mobile-drawer,
+html.dark #dashboard-modal > div,
+html.dark #kitchen-menu-modal > div,
+html.dark #register-kitchen-modal > div,
+html.dark #register-pg-modal > div {
+  background-color: #0d0d0d !important;
+  border-color: #262626 !important;
+}
+
+html.dark .bg-slate-900,
+html.dark .bg-slate-950,
+html.dark .bg-slate-800,
+html.dark .bg-neutral-900,
+html.dark .bg-neutral-950 {
+  background-color: #080808 !important;
+}
+
+html.dark input:not([type="range"]),
+html.dark select,
+html.dark button.bg-slate-800,
+html.dark button.bg-neutral-900 {
+  background-color: #121212 !important;
+  border-color: #262626 !important;
+  color: #f8fafc !important;
+}
+
+html.dark input[type="range"] {
+  background-color: #3f3f46 !important;
+}
+
+html.dark .border-slate-800,
+html.dark .border-slate-700,
+html.dark .border-neutral-900,
+html.dark .border-neutral-800 {
+  border-color: #1e1e1e !important;
+}
+
+/* COMPLETE LIGHT MODE STYLING & HIGH-CONTRAST OVERRIDES */
+html.light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html.light header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light footer {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+html.light main,
+html.light section {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light section#hero {
+  background-color: #ffffff !important;
+}
+
+html.light section#cities {
+  background-color: #ffffff !important;
+}
+
+html.light section#pgs {
+  background-color: #ffffff !important;
+}
+
+html.light section#reviews {
+  background-color: #ffffff !important;
+}
+
+/* Light mode gradient text & highlight colors */
+html.light .bg-clip-text {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+html.light .text-amber-400 {
+  color: #d97706 !important;
+}
+
+html.light .text-orange-400 {
+  color: #ea580c !important;
+}
+
+html.light .text-emerald-400 {
+  color: #059669 !important;
+}
+
+html.light .text-purple-400 {
+  color: #7c3aed !important;
+}
+
+/* Light mode pill badges */
+html.light .bg-orange-500\/10 {
+  background-color: #ffedd5 !important;
+  border-color: #fed7aa !important;
+  color: #c2410c !important;
+}
+
+html.light .bg-amber-500\/10 {
+  background-color: #fef3c7 !important;
+  border-color: #fde68a !important;
+  color: #b45309 !important;
+}
+
+html.light .bg-emerald-500\/10 {
+  background-color: #d1fae5 !important;
+  border-color: #a7f3d0 !important;
+  color: #047857 !important;
+}
+
+html.light .bg-purple-500\/10 {
+  background-color: #f3e8ff !important;
+  border-color: #e9d5ff !important;
+  color: #6b21a8 !important;
+}
+
+/* Light mode headings & paragraph text */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6 {
+  color: #0f172a !important;
+}
+
+html.light p,
+html.light span:not(.bg-orange-500 *):not(.bg-emerald-600 *):not(.bg-purple-600 *):not(.bg-gradient-to-r *) {
+  color: #475569;
+}
+
+html.light .text-slate-100,
+html.light .text-slate-200 {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-300,
+html.light .text-slate-400 {
+  color: #475569 !important;
+}
+
+/* Nav links */
+html.light nav a {
+  color: #334155 !important;
+}
+html.light nav a:hover {
+  color: #ea580c !important;
+}
+
+/* All Cards, Modals, & Containers in Light Mode */
+html.light .food-card,
+html.light .glass-panel,
+html.light #mobile-drawer,
+html.light #dashboard-modal > div,
+html.light #kitchen-menu-modal > div,
+html.light #register-kitchen-modal > div,
+html.light #register-pg-modal > div,
+html.light .bg-neutral-950,
+html.light .bg-neutral-900,
+html.light .bg-slate-900,
+html.light .bg-slate-950,
+html.light .bg-slate-800,
+html.light .bg-black {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* City Circle Chips in Light Mode */
+html.light .city-chip > div {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+html.light .city-chip span {
+  color: #0f172a !important;
+}
+
+/* Simulator Banner Box in Light Mode */
+html.light #how-it-works .p-6.rounded-2xl {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%) !important;
+  border-color: #fdba74 !important;
+}
+html.light #how-it-works .p-6.rounded-2xl h4 {
+  color: #9a3412 !important;
+}
+html.light #how-it-works .p-6.rounded-2xl p {
+  color: #c2410c !important;
+}
+
+/* Review Cards in Light Mode */
+html.light #reviews-container > div {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+}
+html.light #reviews-container p {
+  color: #334155 !important;
+}
+html.light #reviews-container h4 {
+  color: #0f172a !important;
+}
+
+/* Hero Backdrop in Light Mode */
+html.light #hero .absolute.inset-0 img {
+  opacity: 0.08 !important;
+}
+html.light #hero .absolute.inset-0 div {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 1) 100%) !important;
+}
+
+/* Inputs, Selects, and Icon Buttons in Light Mode */
+html.light input:not([type="range"]),
+html.light select,
+html.light button.bg-neutral-900,
+html.light button.bg-slate-800 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light input[type="range"] {
+  background-color: #cbd5e1 !important;
+}
+
+/* Buttons with colored fills KEEP white text */
+html.light button.bg-orange-500,
+html.light button.bg-emerald-600,
+html.light button.bg-purple-600,
+html.light .bg-gradient-to-r,
+html.light a.bg-gradient-to-r,
+html.light button.bg-gradient-to-r {
+  color: #ffffff !important;
+}
+html.light button.bg-orange-500 *,
+html.light button.bg-emerald-600 *,
+html.light button.bg-purple-600 *,
+html.light .bg-gradient-to-r *,
+html.light a.bg-gradient-to-r * {
+  color: #ffffff !important;
+}
+
+/* Borders in Light Mode */
+html.light .border-neutral-900,
+html.light .border-neutral-800,
+html.light .border-slate-800,
+html.light .border-slate-700 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Center orphan grid items in the Kitchens grid */
+@media (min-width: 1024px) {
+  #kitchens-grid > :nth-child(3n + 1):last-child {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  #kitchens-grid > :nth-child(2n + 1):last-child {
+    grid-column: 1 / -1;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Center last 3 cards in weekly specials on large screens */
+@media (min-width: 1024px) {
+  #weekly-specials-grid {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #weekly-specials-grid > .food-card {
+    width: calc(25% - 1.125rem);
+  }
+}

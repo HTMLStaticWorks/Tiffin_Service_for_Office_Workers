@@ -1,0 +1,1230 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiffin Delivery Services & Home Cooked Meals | Tiffinshala</title>
+  <meta name="description"
+    content="Tiffinshala - Order daily home-cooked tiffin meals or manage meal subscriptions across Noida, Delhi, Gurugram, Bengaluru, Mumbai & 50+ Indian cities." />
+  <meta name="keywords"
+    content="Tiffin Service, Ghar Ka Khana, Home Cooked Meals, Veg Thali, Non Veg Thali, Tiffin Delivery Delhi Noida" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body
+  class="min-h-screen flex flex-col antialiased selection:bg-orange-500 selection:text-white bg-black text-slate-100">
+
+  <!-- TOP HEADER / NAV BAR WITH ICON-ONLY ACTION BUTTONS -->
+  <header
+    class="sticky top-0 z-50 h-[64px] px-4 sm:px-8 bg-black/90 backdrop-blur-md border-b border-neutral-900 flex items-center justify-between transition-colors">
+    <!-- Brand Logo -->
+    <a href="#" class="flex items-center gap-2 group">
+      <div
+        class="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-600 to-amber-500 flex items-center justify-center text-white text-xl font-black shadow-lg shadow-orange-500/20 group-hover:scale-105 transition-transform">
+        🍲
+      </div>
+      <div class="flex flex-col">
+        <span class="brand-title text-2xl tracking-tight">tiffinshala</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden xl:flex items-center gap-6 text-sm font-semibold text-slate-300">
+      <div class="relative group">
+        <button id="nav-home-btn"
+          class="flex items-center gap-1 hover:text-orange-400 transition-colors focus:outline-none">
+          Home
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div
+          class="absolute top-full left-0 mt-4 w-36 bg-neutral-900 border border-neutral-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col overflow-hidden z-50">
+          <div class="absolute -top-4 left-0 w-full h-4 bg-transparent"></div>
+          <!-- invisible bridge to keep hover active -->
+          <a href="#hero" class="px-4 py-2.5 hover:bg-neutral-800 hover:text-orange-400 transition-colors">Home 1</a>
+          <a href="#home2"
+            class="px-4 py-2.5 hover:bg-neutral-800 hover:text-orange-400 transition-colors border-t border-neutral-800/50">Home
+            2</a>
+        </div>
+      </div>
+      <a href="#about" class="hover:text-orange-400 transition-colors">About</a>
+      <a href="#how-it-works" class="hover:text-orange-400 transition-colors">How It Works</a>
+      <a href="#cities" class="hover:text-orange-400 transition-colors">Cities</a>
+      <a href="#kitchens" class="hover:text-orange-400 transition-colors">Kitchens</a>
+      <a href="#weekly-specials" class="hover:text-orange-400 transition-colors">Weekly Specials</a>
+      <a href="#pgs" class="hover:text-orange-400 transition-colors">Find PGs</a>
+      <a href="#corporate" class="hover:text-orange-400 transition-colors">Corporate</a>
+      <a href="#contact" class="hover:text-orange-400 transition-colors">Contact</a>
+    </nav>
+
+    <!-- Header Actions (All Icon-Only Buttons) -->
+    <div class="flex items-center gap-2">
+      <!-- 🌙 Theme Switcher (Icon Only) -->
+      <button id="theme-toggle-btn" onclick="toggleTheme()"
+        class="hidden xl:flex w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 hover:text-orange-400 font-bold text-base items-center justify-center transition-all cursor-pointer shadow-sm hover:border-orange-500/50"
+        title="Toggle Light / Dark Mode">
+        🌙
+      </button>
+
+      <!-- ⇄ RTL Direction Toggle (Icon Only) -->
+      <button id="rtl-toggle-btn" onclick="toggleRtl()"
+        class="hidden xl:flex w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 hover:text-orange-400 font-bold text-base items-center justify-center transition-all cursor-pointer shadow-sm hover:border-orange-500/50"
+        title="Toggle LTR / RTL Direction">
+        ⇄
+      </button>
+
+      <!-- 📊 My Dashboard Button (Icon Only) -->
+      <button onclick="openModal('dashboard-modal')"
+        class="hidden xl:flex w-10 h-10 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-base font-black items-center justify-center shadow-lg shadow-orange-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+        title="My Dashboard & Tracker">
+        📊
+      </button>
+
+      <!-- 👤 Partner With Us Button (Icon Only) -->
+      <button onclick="openModal('register-kitchen-modal')"
+        class="hidden xl:flex w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 hover:text-orange-400 hover:border-orange-500 text-base font-bold items-center justify-center transition-all cursor-pointer shadow-sm"
+        title="Partner With Us (Register Kitchen)">
+        👤
+      </button>
+
+
+
+      <!-- Hamburger Button (Mobile) -->
+      <button id="mobile-menu-open"
+        class="xl:hidden w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 hover:text-orange-400 flex items-center justify-center transition-colors"
+        aria-label="Open Mobile Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE SLIDE-OUT DRAWER OVERLAY -->
+  <div id="drawer-backdrop"
+    class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+  </div>
+
+  <div id="mobile-drawer"
+    class="fixed top-0 left-0 z-[70] h-full w-72 bg-neutral-950 border-r border-neutral-900 flex flex-col transition-transform duration-300 ease-in-out -translate-x-full shadow-2xl">
+    <div class="flex items-center justify-between px-5 h-[64px] border-b border-neutral-900 shrink-0">
+      <div class="flex items-center gap-2">
+        <div
+          class="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-sm shadow-lg shadow-orange-500/20">
+          🍲</div>
+        <span class="brand-title text-xl">tiffinshala</span>
+      </div>
+      <button id="mobile-menu-close"
+        class="w-8 h-8 rounded-lg bg-neutral-900 text-slate-300 flex items-center justify-center text-sm font-bold">
+        ✕
+      </button>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+      <a href="#hero" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        Home
+      </a>
+      <a href="#home2" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        Home 2
+      </a>
+      <a href="#about" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        About
+      </a>
+      <a href="#contact" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        Contact
+      </a>
+      <a href="#how-it-works" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        How It Works
+      </a>
+      <a href="#cities" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        Cities
+      </a>
+      <a href="#kitchens" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        Kitchens
+      </a>
+      <a href="#weekly-specials" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        Weekly Specials
+      </a>
+      <a href="#pgs" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        Find PGs
+      </a>
+      <a href="#corporate" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        Corporate
+      </a>
+
+    </nav>
+
+    <div class="p-4 border-t border-neutral-900 shrink-0 space-y-3">
+      <div class="grid grid-cols-4 gap-2">
+        <button onclick="toggleTheme()"
+          class="py-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 text-base font-bold flex items-center justify-center"
+          title="Theme">
+          🌙
+        </button>
+        <button onclick="toggleRtl()"
+          class="py-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 text-base font-bold flex items-center justify-center"
+          title="LTR / RTL">
+          ⇄
+        </button>
+        <button onclick="openModal('dashboard-modal'); document.getElementById('mobile-menu-close').click();"
+          class="py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-base font-bold flex items-center justify-center shadow-lg"
+          title="Dashboard">
+          📊
+        </button>
+        <button onclick="openModal('register-kitchen-modal'); document.getElementById('mobile-menu-close').click();"
+          class="py-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 text-base font-bold flex items-center justify-center"
+          title="Register">
+          👤
+        </button>
+      </div>
+      <button onclick="openModal('register-pg-modal'); document.getElementById('mobile-menu-close').click();"
+        class="w-full py-2.5 bg-neutral-900 border border-neutral-800 text-slate-200 font-bold text-xs rounded-xl hover:bg-neutral-800 transition-colors">
+        Register PG
+      </button>
+    </div>
+  </div>
+
+  <main class="flex-1 bg-black">
+
+    <!-- 1. HOME SECTION -->
+    <section id="hero"
+      class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-neutral-900 bg-black">
+      <!-- Background Hero Image Backdrop -->
+      <div class="absolute inset-0 z-0">
+        <img src="images/hero.jpg" alt="Home Tiffin Spread" class="w-full h-full object-cover opacity-20" />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black"></div>
+      </div>
+
+      <div
+        class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div class="max-w-2xl">
+          <!-- Tagline Pill -->
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-extrabold uppercase tracking-wider mb-6">
+            <span>✨</span> <span>Trusted Tiffin & Meal Network across India</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-slate-100 mb-6">
+            <span>Eat Good,</span>
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">Feel
+              Good.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl mb-8">
+            Discover verified tiffin delivery services & home-cooked meals near you in 50+ cities.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
+            <a href="#kitchens"
+              class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold text-sm sm:text-base shadow-xl shadow-orange-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+              <span>View Kitchens</span>
+              <span>→</span>
+            </a>
+            <button onclick="openModal('dashboard-modal')"
+              class="px-6 py-3.5 rounded-xl bg-neutral-900 border border-orange-500/40 text-orange-400 font-extrabold text-sm sm:text-base hover:bg-orange-500 hover:text-white transition-all shadow-lg">
+              📊 Open Dashboard
+            </button>
+          </div>
+
+          <!-- Extra Content: Why Choose Tiffinshala Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-neutral-900">
+            <div class="p-3 rounded-xl bg-neutral-950 border border-neutral-900 text-left">
+              <span class="text-lg block mb-1">🌿</span>
+              <h4 class="text-xs font-bold text-slate-100">100% Homestyle</h4>
+              <p class="text-[10px] text-slate-400">Zero artificial colors</p>
+            </div>
+            <div class="p-3 rounded-xl bg-neutral-950 border border-neutral-900 text-left">
+              <span class="text-lg block mb-1">🛡️</span>
+              <h4 class="text-xs font-bold text-slate-100">FSSAI Certified</h4>
+              <p class="text-[10px] text-slate-400">5-Star hygiene score</p>
+            </div>
+            <div class="p-3 rounded-xl bg-neutral-950 border border-neutral-900 text-left">
+              <span class="text-lg block mb-1">⏸️</span>
+              <h4 class="text-xs font-bold text-slate-100">Instant Meal Pause</h4>
+              <p class="text-[10px] text-slate-400">Pause anytime in 1-click</p>
+            </div>
+            <div class="p-3 rounded-xl bg-neutral-950 border border-neutral-900 text-left">
+              <span class="text-lg block mb-1">🛵</span>
+              <h4 class="text-xs font-bold text-slate-100">Hot Doorstep</h4>
+              <p class="text-[10px] text-slate-400">On-time insulated delivery</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Tiffin Box Hero Graphic Card -->
+        <div class="w-full max-w-md shrink-0 relative">
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl blur-xl opacity-30 animate-pulse-glow">
+          </div>
+          <div class="relative bg-neutral-950 border border-neutral-900 p-5 rounded-3xl shadow-2xl">
+            <img src="images/tiffin1.jpg" alt="Stainless Steel Tiffin Box Spread"
+              class="w-full h-56 object-cover rounded-2xl mb-4 border border-neutral-800" />
+            <div class="flex items-center justify-between mb-2">
+              <span
+                class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+                ● Freshly Cooked Today
+              </span>
+              <span class="text-amber-400 text-xs font-bold">⭐ 4.9 (340+ Reviews)</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-100">Desi Ghee Ghar Ka Tiffin</h3>
+            <p class="text-xs text-slate-400 mt-1">4 Phulka Roti + Dal Tadka + Paneer Sabzi + Jeera Rice</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOME 2 SECTION -->
+    <section id="home2" class="py-20 bg-neutral-950 border-t border-neutral-900">
+      <!-- Section 1: Intro -->
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 mb-16">
+        <div class="flex flex-col lg:flex-row items-center gap-10">
+          <div class="lg:w-1/2 text-center lg:text-left">
+            <span
+              class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-extrabold uppercase tracking-widest inline-block mb-4">
+              Premium & Healthy
+            </span>
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight mb-6">
+              Elevate Your Daily <br /><span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Nutrition
+                Plan</span>
+            </h2>
+            <p class="text-base text-slate-300 leading-relaxed mb-8">
+              Experience the new Home 2 featuring curated, calorie-counted meals crafted by top nutritionists. Perfect
+              for fitness enthusiasts and health-conscious professionals seeking higher quality tiffins.
+            </p>
+            <div class="flex justify-center lg:justify-start gap-4">
+              <a href="#kitchens"
+                class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold text-sm shadow-lg hover:scale-105 transition-transform">Explore
+                Plans</a>
+            </div>
+          </div>
+          <div class="lg:w-1/2 relative">
+            <div class="absolute -inset-4 bg-gradient-to-tr from-emerald-500/20 to-transparent rounded-3xl blur-2xl">
+            </div>
+            <img src="images/Elevate%20Your%20Daily.png" alt="Elevate Your Daily Nutrition Plan"
+              class="relative rounded-3xl shadow-2xl border border-neutral-800 object-cover h-80 w-full" />
+          </div>
+        </div>
+      </div>
+      <!-- Section 2: Features Grid -->
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="rounded-3xl bg-black border border-neutral-900 hover:border-emerald-500/30 transition-colors group overflow-hidden flex flex-col">
+            <img src="images/Dietitian%20Approved.png" alt="Dietitian Approved" class="w-full h-48 object-cover" />
+            <div class="p-8 flex-1">
+              <h3 class="text-xl font-bold text-slate-100 mb-3">Dietitian Approved</h3>
+              <p class="text-sm text-slate-400">Every meal is balanced for macros, ensuring you get exactly what your
+                body needs.</p>
+            </div>
+          </div>
+          <div
+            class="rounded-3xl bg-black border border-neutral-900 hover:border-emerald-500/30 transition-colors group overflow-hidden flex flex-col">
+            <img src="images/Organic%20Ingredients.png" alt="Organic Ingredients" class="w-full h-48 object-cover" />
+            <div class="p-8 flex-1">
+              <h3 class="text-xl font-bold text-slate-100 mb-3">Organic Ingredients</h3>
+              <p class="text-sm text-slate-400">Sourced directly from local organic farms to provide the freshest taste
+                and highest nutrients.</p>
+            </div>
+          </div>
+          <div
+            class="rounded-3xl bg-black border border-neutral-900 hover:border-emerald-500/30 transition-colors group overflow-hidden flex flex-col">
+            <img src="images/High%20Energy%20Output.png" alt="High Energy Output" class="w-full h-48 object-cover" />
+            <div class="p-8 flex-1">
+              <h3 class="text-xl font-bold text-slate-100 mb-3">High Energy Output</h3>
+              <p class="text-sm text-slate-400">Meals designed to prevent the afternoon slump and keep you energized all
+                day long.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-black border-t border-neutral-900">
+      <!-- Section 1: Our Story -->
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 mb-20">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span
+            class="px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-extrabold uppercase tracking-widest inline-block mb-4">
+            About Us
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-100 tracking-tight mb-6">
+            Connecting You to the <br />Taste of Home
+          </h2>
+          <p class="text-base text-slate-300 leading-relaxed">
+            Tiffinshala started with a simple idea: no matter where life takes you, you should never have to miss the
+            comfort of a home-cooked meal. We partner with passionate home chefs to bring authentic, hygienic, and
+            loving food straight to your desk or dorm.
+          </p>
+        </div>
+        <div class="relative rounded-3xl overflow-hidden h-80 md:h-[450px] w-full border border-neutral-800">
+          <img src="images/Connecting%20You%20to%20the%20taste%20of%20the%20home.png" alt="Home Kitchen Cooking"
+            class="w-full h-full object-cover opacity-80" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center p-8">
+            <h3 class="text-2xl md:text-3xl font-bold text-center w-full drop-shadow-lg"
+              style="color: white !important;">Empowering 500+ Home Chefs Across India</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Core Values -->
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <h3 class="text-2xl font-extrabold text-center text-slate-100 mb-10">Our Core Values</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+          <div class="bg-neutral-950 rounded-2xl border border-neutral-900 overflow-hidden flex flex-col group">
+            <img src="images/Impeccable%20Hygiene.png" alt="Impeccable Hygiene" class="w-full h-40 object-cover" />
+            <div class="p-6 flex-1 text-center">
+              <h4 class="text-lg font-bold text-white mb-2">Impeccable Hygiene</h4>
+              <p class="text-xs text-slate-400">Strict quality controls and FSSAI certified kitchens.</p>
+            </div>
+          </div>
+          <div class="bg-neutral-950 rounded-2xl border border-neutral-900 overflow-hidden flex flex-col group">
+            <img src="images/Made%20with%20Love.png" alt="Made with Love" class="w-full h-40 object-cover" />
+            <div class="p-6 flex-1 text-center">
+              <h4 class="text-lg font-bold text-white mb-2">Made with Love</h4>
+              <p class="text-xs text-slate-400">Every meal is prepared with the care of a mother.</p>
+            </div>
+          </div>
+          <div class="bg-neutral-950 rounded-2xl border border-neutral-900 overflow-hidden flex flex-col group">
+            <img src="images/Community%20First.png" alt="Community First" class="w-full h-40 object-cover" />
+            <div class="p-6 flex-1 text-center">
+              <h4 class="text-lg font-bold text-white mb-2">Community First</h4>
+              <p class="text-xs text-slate-400">We uplift local homemakers into successful entrepreneurs.</p>
+            </div>
+          </div>
+          <div class="bg-neutral-950 rounded-2xl border border-neutral-900 overflow-hidden flex flex-col group">
+            <img src="images/Reliable%20Delivery.png" alt="Reliable Delivery" class="w-full h-40 object-cover" />
+            <div class="p-6 flex-1 text-center">
+              <h4 class="text-lg font-bold text-white mb-2">Reliable Delivery</h4>
+              <p class="text-xs text-slate-400">Hot and fresh, delivered exactly when you need it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. HOW IT WORKS SECTION -->
+    <section id="how-it-works" class="py-16 bg-neutral-950 border-b border-neutral-900">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <span
+            class="px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-extrabold uppercase tracking-widest block w-max mx-auto mb-3">
+            Simple 4-Step Process
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+            How Tiffinshala Delivers Happiness
+          </h2>
+          <p class="text-xs text-slate-400 mt-2">Zero hassle, zero wasted food. Total flexibility for students, working
+            pros, & families.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div
+            class="p-6 rounded-2xl bg-black border border-neutral-900 text-center relative group hover:border-orange-500/50 transition-colors">
+            <div
+              class="w-12 h-12 rounded-2xl bg-orange-500 text-white font-black text-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              1
+            </div>
+            <h3 class="text-base font-bold text-slate-100 mb-2">Pick Your City & Locality</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Select your city (Delhi, Noida, Gurugram, Bengaluru, etc.)
+              and explore verified home kitchens nearby.</p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-black border border-neutral-900 text-center relative group hover:border-orange-500/50 transition-colors">
+            <div
+              class="w-12 h-12 rounded-2xl bg-amber-500 text-white font-black text-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              2
+            </div>
+            <h3 class="text-base font-bold text-slate-100 mb-2">Customize Meal Plan</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Choose single trial meal or start 7/30-day subscription.
+              Select Lunch, Dinner, or Both!</p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-black border border-neutral-900 text-center relative group hover:border-orange-500/50 transition-colors">
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-600 text-white font-black text-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              3
+            </div>
+            <h3 class="text-base font-bold text-slate-100 mb-2">Manage on Dashboard</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Pause lunch or dinner with a single click whenever you
+              travel. Unused meals auto-roll over!</p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-black border border-neutral-900 text-center relative group hover:border-orange-500/50 transition-colors">
+            <div
+              class="w-12 h-12 rounded-2xl bg-purple-600 text-white font-black text-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              4
+            </div>
+            <h3 class="text-base font-bold text-slate-100 mb-2">Hygienic Express Delivery</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Hot, non-oily insulated tiffin delivered straight to your
+              home, office desk, or PG room.</p>
+          </div>
+        </div>
+
+        <!-- Live Interactive Meal Pause Simulator Box -->
+        <div
+          class="p-6 rounded-2xl bg-gradient-to-r from-black via-neutral-950 to-black border border-orange-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div class="space-y-1 text-center md:text-left">
+            <span
+              class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+              Try It Live
+            </span>
+            <h4 class="text-lg font-bold text-white">Test the 1-Click Meal Pause Simulator</h4>
+            <p class="text-xs text-slate-300">Going out for lunch tomorrow? Pause it right now to see how your
+              subscription balance auto-extends.</p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button onclick="toggleMealPause('lunch'); showToast('Simulated Pause/Resume! Your validity updated.')"
+              class="px-5 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs rounded-xl shadow-lg transition-transform active:scale-95">
+              ⏸️ Simulate Pause Tomorrow's Lunch
+            </button>
+            <button onclick="openModal('dashboard-modal')"
+              class="px-4 py-3 bg-neutral-900 border border-neutral-800 text-slate-200 font-bold text-xs rounded-xl hover:bg-neutral-800">
+              Open Full Dashboard →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CITIES SECTION -->
+    <section id="cities" class="py-16 bg-black border-b border-neutral-900">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <span
+            class="px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-extrabold uppercase tracking-widest block w-max mx-auto mb-3">
+            Available Cities
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+            Tiffin Delivery Services Across India
+          </h2>
+          <p class="text-sm text-slate-400 mt-2">
+            Select your city to explore authentic home kitchen options near you.
+          </p>
+        </div>
+
+        <!-- Horizontal Scrollable City Chips -->
+        <div id="cities-scroll-container" class="flex items-center gap-4 overflow-x-auto pb-4 hide-scrollbar mb-10">
+          <!-- Rendered via app.js -->
+        </div>
+
+        <!-- Locality Guide Grid -->
+        <div class="p-6 rounded-2xl bg-neutral-950 border border-neutral-900">
+          <h4 class="text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
+            <span>📍 Popular Delivery Hubs & Localities</span>
+          </h4>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-300">
+            <div>
+              <span class="font-bold text-orange-400 block mb-1">Noida</span>
+              <ul class="space-y-0.5 text-[11px] text-slate-400">
+                <li>Sector 62 IT Park</li>
+                <li>Sector 18 Market</li>
+                <li>Sector 137 Expressway</li>
+              </ul>
+            </div>
+            <div>
+              <span class="font-bold text-orange-400 block mb-1">Delhi</span>
+              <ul class="space-y-0.5 text-[11px] text-slate-400">
+                <li>Laxmi Nagar Hub</li>
+                <li>North Campus DU</li>
+                <li>Saket & Malviya Nagar</li>
+              </ul>
+            </div>
+            <div>
+              <span class="font-bold text-orange-400 block mb-1">Gurugram</span>
+              <ul class="space-y-0.5 text-[11px] text-slate-400">
+                <li>Cyber City Hub</li>
+                <li>DLF Phase 3</li>
+                <li>Sector 56 Golf Course</li>
+              </ul>
+            </div>
+            <div>
+              <span class="font-bold text-orange-400 block mb-1">Bengaluru</span>
+              <ul class="space-y-0.5 text-[11px] text-slate-400">
+                <li>Koramangala 5th Block</li>
+                <li>HSR Layout Sector 1</li>
+                <li>Whitefield IT Corridor</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. KITCHENS DISCOVERY SECTION -->
+    <section id="kitchens" class="py-16 max-w-6xl mx-auto px-5 sm:px-8 bg-black">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <span id="kitchens-count-badge"
+            class="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-bold text-orange-400 inline-block mb-2">
+            Loading Kitchens...
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+            Find Home Kitchens & Tiffin Services
+          </h2>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full md:w-80">
+          <input type="text" id="kitchen-search-input" placeholder="Search kitchen name, locality, or dish..."
+            class="w-full bg-neutral-900 border border-neutral-800 text-sm text-slate-100 rounded-xl py-3 px-4 pl-10 focus:outline-none focus:border-orange-500 transition-colors" />
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+        </div>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2 mb-8">
+        <button onclick="setCategoryFilter('all')" data-category="all"
+          class="filter-pill pill-active px-4 py-2 rounded-xl border text-xs font-bold transition-all">
+          All Kitchens
+        </button>
+        <button onclick="setCategoryFilter('veg')" data-category="veg"
+          class="filter-pill bg-neutral-900 text-slate-300 border-neutral-800 px-4 py-2 rounded-xl border text-xs font-bold hover:border-orange-500 transition-all">
+          🥬 Pure Veg
+        </button>
+        <button onclick="setCategoryFilter('nonveg')" data-category="nonveg"
+          class="filter-pill bg-neutral-900 text-slate-300 border-neutral-800 px-4 py-2 rounded-xl border text-xs font-bold hover:border-orange-500 transition-all">
+          🍗 Veg & Non-Veg
+        </button>
+        <button onclick="setCategoryFilter('subscription')" data-category="subscription"
+          class="filter-pill bg-neutral-900 text-slate-300 border-neutral-800 px-4 py-2 rounded-xl border text-xs font-bold hover:border-orange-500 transition-all">
+          📅 Monthly Subscription
+        </button>
+      </div>
+
+      <!-- Kitchen Cards Grid -->
+      <div id="kitchens-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- 5. WEEKLY SPECIALS SHOWCASE SECTION -->
+    <section id="weekly-specials" class="py-16 bg-neutral-950 border-t border-b border-neutral-900">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span
+              class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-extrabold uppercase tracking-widest inline-block mb-2">
+              Chef Specials
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+              Weekly Special Menu Showcase
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">Pre-order curated 7-day homestyle specialty thalis from top rated
+              kitchens.</p>
+          </div>
+        </div>
+
+        <div id="weekly-specials-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FIND PGS & ACCOMMODATIONS SECTION -->
+    <section id="pgs" class="py-16 bg-black">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span
+              class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-extrabold uppercase tracking-widest inline-block mb-2">
+              Stay & Meal Combo
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+              Verified PGs & Co-Living Spaces
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Find comfortable rooms with fresh home-style tiffin food included.
+            </p>
+          </div>
+          <button onclick="openModal('register-pg-modal')"
+            class="px-4 py-2.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-slate-200 text-xs font-bold rounded-xl shrink-0 transition-colors">
+            + Register PG / Room
+          </button>
+        </div>
+
+        <div id="pgs-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CORPORATE CATERING SECTION -->
+    <section id="corporate" class="py-16 bg-neutral-950 border-t border-neutral-900">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7">
+            <span
+              class="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-extrabold uppercase tracking-widest inline-block mb-3">
+              Corporate & Bulk Catering
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight mb-4">
+              Need Bulk Tiffins for Your Office or PG?
+            </h2>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              We provide custom daily lunch & dinner catering packages for tech hubs, startups, hostels, and corporate
+              teams with customized menus, tax invoices, and dedicated delivery partners.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="p-3.5 rounded-xl bg-black border border-neutral-900">
+                <span class="text-lg block mb-1">🏢</span>
+                <h4 class="text-xs font-bold text-white">Office Lunch Boxes</h4>
+                <p class="text-[11px] text-slate-400">Custom calorie-balanced Executive Thalis delivered at 1:00 PM
+                  Sharp.</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-black border border-neutral-900">
+                <span class="text-lg block mb-1">🎉</span>
+                <h4 class="text-xs font-bold text-white">Event & Team Feasts</h4>
+                <p class="text-[11px] text-slate-400">Special buffet thali boxes for celebrations & Friday office
+                  lunches.</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <button onclick="openModal('register-kitchen-modal')"
+                class="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold text-xs rounded-xl shadow-lg hover:opacity-90">
+                Get Corporate Quote →
+              </button>
+              <span class="text-xs text-slate-400">📞 Priority Helpline: +91 98765 43210</span>
+            </div>
+          </div>
+
+          <!-- Interactive Corporate Price Calculator Widget -->
+          <div class="lg:col-span-5 bg-black border border-purple-500/30 p-6 rounded-3xl shadow-2xl relative">
+            <h3 class="text-base font-extrabold text-white mb-1">🧮 Corporate Bulk Discount Estimator</h3>
+            <p class="text-xs text-slate-400 mb-6">Slide employee count to estimate tier discount & monthly savings.</p>
+
+            <div class="space-y-4">
+              <div>
+                <div class="flex items-center justify-between text-xs font-bold mb-2">
+                  <span class="text-slate-300">Staff Headcount:</span>
+                  <span id="corp-count-display" class="text-orange-400 text-sm font-black">25 Employees</span>
+                </div>
+                <input type="range" min="10" max="200" step="5" value="25"
+                  oninput="updateCorporateCalculator(this.value)"
+                  class="w-full h-2 bg-neutral-900 rounded-lg appearance-none cursor-pointer accent-orange-500" />
+                <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                  <span>10 Staff</span>
+                  <span>50 Staff</span>
+                  <span>100 Staff</span>
+                  <span>200+ Staff</span>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-neutral-950 border border-neutral-900 space-y-2">
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-400">Bulk Price Per Thali:</span>
+                  <span id="corp-price-display" class="font-extrabold text-orange-400">₹ 95 / meal</span>
+                </div>
+                <div class="flex justify-between text-xs pt-2 border-t border-neutral-900">
+                  <span class="text-slate-400">Estimated Monthly Savings:</span>
+                  <span id="corp-savings-display" class="font-extrabold text-emerald-400">Save ₹ 19,250 / month</span>
+                </div>
+              </div>
+
+              <button
+                onclick="showToast('Corporate Quote requested for ' + state.corporateHeadcount + ' employees! Sales team will call today.')"
+                class="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs rounded-xl shadow-lg transition-colors">
+                Request Custom Quotation
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="py-16 max-w-6xl mx-auto px-5 sm:px-8 bg-black">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span
+          class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-extrabold uppercase tracking-widest block w-max mx-auto mb-3">
+          Testimonials
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+          Loved by 10,000+ Daily Foodies
+        </h2>
+      </div>
+
+      <div id="reviews-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Rendered by app.js -->
+      </div>
+    </section>
+
+    <!-- FAQS ACCORDION SECTION -->
+    <section id="faqs" class="py-16 bg-black border-t border-neutral-900">
+      <div class="max-w-3xl mx-auto px-5 sm:px-8">
+        <div class="text-center mb-10">
+          <span
+            class="px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-extrabold uppercase tracking-widest block w-max mx-auto mb-3">
+            Got Questions?
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div id="faqs-accordion" class="space-y-3">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-neutral-950 border-t border-neutral-900 relative">
+      <!-- Decorative background -->
+      <div
+        class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-orange-500/5 to-transparent pointer-events-none">
+      </div>
+
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <!-- Section 1: Contact Form -->
+          <div>
+            <span
+              class="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-extrabold uppercase tracking-widest inline-block mb-4">
+              Get In Touch
+            </span>
+            <h2 class="text-4xl font-extrabold text-slate-100 tracking-tight mb-4">
+              We'd Love to Hear From You
+            </h2>
+            <p class="text-sm text-slate-400 mb-8">
+              Whether you have a question about our tiffin plans, pricing, or want to partner with us, our team is ready
+              to answer all your questions.
+            </p>
+
+            <form class="space-y-5 bg-black p-8 rounded-3xl border border-neutral-900 shadow-2xl">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-2">First Name</label>
+                  <input type="text" placeholder="John"
+                    class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-2">Last Name</label>
+                  <input type="text" placeholder="Doe"
+                    class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-2">Email Address</label>
+                <input type="email" placeholder="john@example.com"
+                  class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-2">Your Message</label>
+                <textarea rows="4" placeholder="How can we help you?"
+                  class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all resize-none"></textarea>
+              </div>
+              <button type="button"
+                class="w-full py-3.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold text-sm rounded-xl shadow-lg hover:scale-[1.02] transition-transform">
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Section 2: Contact Info & Hubs -->
+          <div class="flex flex-col justify-center">
+            <h3 class="text-2xl font-extrabold text-white mb-8">Contact Information</h3>
+
+            <div class="space-y-6 mb-12">
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xl shrink-0">
+                  📍</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-200">Headquarters</h4>
+                  <p class="text-sm text-slate-400 mt-1">123 Tiffinshala Tower, Cyber City<br />Gurugram, Haryana 122002
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xl shrink-0">
+                  📞</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-200">Phone & WhatsApp</h4>
+                  <p class="text-sm text-slate-400 mt-1">+91 98765 43210 <br />(Mon-Sat, 9 AM - 8 PM)</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xl shrink-0">
+                  ✉️</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-200">Email Support</h4>
+                  <p class="text-sm text-slate-400 mt-1">support@tiffinshala.com<br />partners@tiffinshala.com</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini Map -->
+            <div class="rounded-3xl bg-neutral-900 border border-neutral-800 overflow-hidden h-56 relative w-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.2233913121413!2d77.08534661508215!3d28.49141979844284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d193e62058693%3A0x6b099684c3c3a444!2sCyber%20City%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="absolute inset-0 w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-300"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-black border-t border-neutral-900 text-slate-400 py-12 px-5 sm:px-8">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 text-center md:text-left">
+      <div class="md:col-span-1">
+        <a href="#" class="flex items-center justify-center md:justify-start gap-2 mb-3">
+          <div
+            class="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-sm shadow-lg shadow-orange-500/20">
+            🍲</div>
+          <span class="brand-title text-2xl">tiffinshala</span>
+        </a>
+        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+          Order healthy, hygienic home-cooked meals daily across India.
+        </p>
+        <div class="flex items-center justify-center md:justify-start gap-3 text-slate-400">
+          <!-- Instagram -->
+          <a href="#"
+            class="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-orange-400 hover:border-orange-500/50 transition-colors"
+            title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#"
+            class="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-orange-400 hover:border-orange-500/50 transition-colors"
+            title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.714 5H18V0h-3.808C10.598 0 9 1.582 9 4.615V8z" />
+            </svg>
+          </a>
+          <!-- Twitter / X -->
+          <a href="#"
+            class="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-orange-400 hover:border-orange-500/50 transition-colors"
+            title="Twitter / X">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="#"
+            class="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-orange-400 hover:border-orange-500/50 transition-colors"
+            title="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3">Cities</h4>
+        <ul class="space-y-1.5 text-xs">
+          <li><a href="#cities" onclick="selectCity('Delhi')" class="hover:text-orange-400">Delhi Tiffin Service</a>
+          </li>
+          <li><a href="#cities" onclick="selectCity('Noida')" class="hover:text-orange-400">Noida Tiffin Service</a>
+          </li>
+          <li><a href="#cities" onclick="selectCity('Gurugram')" class="hover:text-orange-400">Gurugram Meals</a></li>
+          <li><a href="#cities" onclick="selectCity('Bengaluru')" class="hover:text-orange-400">Bengaluru Tiffin</a>
+          </li>
+          <li><a href="#cities" onclick="selectCity('Mumbai')" class="hover:text-orange-400">Mumbai Homestyle Tiffin</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3">Quick Links</h4>
+        <ul class="space-y-1.5 text-xs">
+          <li><a href="#" onclick="openModal('dashboard-modal')" class="hover:text-orange-400">My Dashboard &
+              Tracker</a></li>
+          <li><a href="#home2" class="hover:text-orange-400">Home 2</a></li>
+          <li><a href="#about" class="hover:text-orange-400">About Us</a></li>
+          <li><a href="#contact" class="hover:text-orange-400">Contact</a></li>
+          <li><a href="#how-it-works" class="hover:text-orange-400">How It Works</a></li>
+          <li><a href="#kitchens" class="hover:text-orange-400">Find Kitchens</a></li>
+          <li><a href="#weekly-specials" class="hover:text-orange-400">Weekly Specials</a></li>
+          <li><a href="#pgs" class="hover:text-orange-400">Find PGs</a></li>
+          <li><a href="#corporate" class="hover:text-orange-400">Corporate Catering</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3">Legal & Hygiene</h4>
+        <ul class="space-y-1.5 text-xs">
+          <li><a href="#" class="hover:text-orange-400">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-orange-400">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-orange-400">Hygiene & Safety Standards</a></li>
+          <li><a href="#" class="hover:text-orange-400">FSSAI Compliance</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto pt-6 border-t border-neutral-900 text-center text-xs text-slate-500">
+      © 2026 Tiffinshala. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- USER & VENDOR DASHBOARD MODAL -->
+  <div id="dashboard-modal"
+    class="fixed inset-0 z-[85] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fade-in">
+    <div
+      class="bg-neutral-950 border border-neutral-800 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden relative flex flex-col max-h-[90vh]">
+      <!-- Dashboard Modal Header -->
+      <div class="px-6 py-4 border-b border-neutral-900 flex items-center justify-between bg-black shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">📊</span>
+          <div>
+            <h3 class="text-lg font-extrabold text-white">Tiffinshala Dashboard</h3>
+            <p class="text-xs text-slate-400">Manage subscriptions, track daily delivery & partner metrics</p>
+          </div>
+        </div>
+        <button onclick="closeModal('dashboard-modal')"
+          class="w-8 h-8 rounded-full bg-neutral-900 text-slate-300 flex items-center justify-center hover:bg-neutral-800">
+          ✕
+        </button>
+      </div>
+
+      <!-- Dashboard Tabs Header -->
+      <div
+        class="px-6 py-3 border-b border-neutral-900 bg-neutral-950 flex items-center gap-2 shrink-0 overflow-x-auto">
+        <button onclick="setDashboardTab('subscriptions')" data-dash-tab="subscriptions"
+          class="px-4 py-2 rounded-xl text-xs font-bold bg-orange-500 text-white transition-all shadow shrink-0">
+          🍱 Active Subscriptions & Live Tracker
+        </button>
+        <button onclick="setDashboardTab('history')" data-dash-tab="history"
+          class="px-4 py-2 rounded-xl text-xs font-bold bg-neutral-900 text-slate-800 dark:text-slate-400 transition-all shrink-0">
+          🧾 Order History & Receipts
+        </button>
+        <button onclick="setDashboardTab('vendor')" data-dash-tab="vendor"
+          class="px-4 py-2 rounded-xl text-xs font-bold bg-neutral-900 text-slate-800 dark:text-slate-400 transition-all shrink-0">
+          🏪 Vendor Analytics (Kitchen Partner)
+        </button>
+      </div>
+
+      <!-- Dashboard Body Container -->
+      <div id="dashboard-tab-body" class="p-6 overflow-y-auto flex-1">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- KITCHEN MENU MODAL -->
+  <div id="kitchen-menu-modal"
+    class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in">
+    <div
+      class="bg-neutral-950 border border-neutral-800 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden relative">
+      <div id="kitchen-modal-content">
+        <!-- Dynamic content via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTER KITCHEN MODAL -->
+  <div id="register-kitchen-modal"
+    class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in">
+    <div class="bg-neutral-950 border border-neutral-800 w-full max-w-md rounded-2xl shadow-2xl p-6 relative">
+      <button onclick="closeModal('register-kitchen-modal')"
+        class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
+
+      <div class="flex items-center justify-center gap-2 mb-4 mt-2">
+        <div
+          class="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-sm shadow-lg shadow-orange-500/20">
+          🍲</div>
+        <span class="brand-title text-xl">tiffinshala</span>
+      </div>
+      <h3 class="text-xl font-extrabold text-slate-100 mb-1 text-center">Register Your Kitchen 👨‍🍳</h3>
+      <p class="text-xs text-slate-400 mb-5 text-center">Start delivering homestyle tiffins to thousands of daily
+        subscribers near you.</p>
+
+      <form onsubmit="handleRegisterForm(event, 'kitchen')" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Kitchen Name</label>
+          <input type="text" required placeholder="e.g. Grandma's Rasoi"
+            class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:border-orange-500 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">City & Area</label>
+          <input type="text" required placeholder="e.g. Sector 62, Noida"
+            class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:border-orange-500 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Phone Number (WhatsApp)</label>
+          <input type="tel" required placeholder="+91 98765 43210"
+            class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:border-orange-500 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Food Category</label>
+          <select
+            class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:border-orange-500 outline-none">
+            <option>Pure Veg</option>
+            <option>Veg & Non-Veg</option>
+            <option>Jain Meals Only</option>
+          </select>
+        </div>
+        <button type="submit"
+          class="w-full py-3 bg-orange-500 hover:bg-orange-600 text-white font-extrabold text-xs rounded-xl shadow-lg transition-colors mt-2">
+          Submit Application
+        </button>
+        <p class="text-xs text-center text-slate-400 mt-4">
+          Already have an account? <button type="button"
+            onclick="closeModal('register-kitchen-modal'); openModal('login-modal')"
+            class="text-orange-500 font-bold hover:underline">Login</button>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div id="login-modal"
+    class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in">
+    <div class="bg-neutral-950 border border-neutral-800 w-full max-w-md rounded-2xl shadow-2xl p-6 relative">
+      <button onclick="closeModal('login-modal')"
+        class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
+
+      <div class="flex items-center justify-center gap-2 mb-4 mt-2">
+        <div
+          class="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-sm shadow-lg shadow-orange-500/20">
+          🍲</div>
+        <span class="brand-title text-xl">tiffinshala</span>
+      </div>
+      <h3 class="text-xl font-extrabold text-slate-100 mb-1 text-center">Welcome Back 👋</h3>
+      <p class="text-xs text-slate-400 mb-5 text-center">Login to your account to continue.</p>
+
+      <form onsubmit="handleRegisterForm(event, 'login')" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Phone Number / Email</label>
+          <input type="text" required placeholder="Enter your registered phone or email"
+            class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:border-orange-500 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Password</label>
+          <div class="relative">
+            <input type="password" id="login-password" required placeholder="Enter your password"
+              class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3.5 py-2.5 pr-10 text-xs text-slate-100 focus:border-orange-500 outline-none" />
+            <button type="button" onclick="togglePasswordVisibility('login-password', this)"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200">
+              👁️
+            </button>
+          </div>
+        </div>
+        <button type="submit"
+          class="w-full py-3 bg-orange-500 hover:bg-orange-600 text-white font-extrabold text-xs rounded-xl shadow-lg transition-colors mt-2">
+          Login
+        </button>
+        <p class="text-xs text-center text-slate-400 mt-4">
+          Don't have an account? <button type="button"
+            onclick="closeModal('login-modal'); openModal('register-kitchen-modal')"
+            class="text-orange-500 font-bold hover:underline">Register Here</button>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- REGISTER PG MODAL -->
+  <div id="register-pg-modal"
+    class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in">
+    <div class="bg-neutral-950 border border-neutral-800 w-full max-w-md rounded-2xl shadow-2xl p-6 relative">
+      <button onclick="closeModal('register-pg-modal')"
+        class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
+
+      <div class="flex items-center justify-center gap-2 mb-4 mt-2">
+        <div
+          class="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-sm shadow-lg shadow-orange-500/20">
+          🍲</div>
+        <span class="brand-title text-xl">tiffinshala</span>
+      </div>
+      <h3 class="text-xl font-extrabold text-slate-100 mb-1 text-center">Register PG / Co-Living 🏢</h3>
+      <p class="text-xs text-slate-400 mb-5 text-center">List your room with optional meal integration on Tiffinshala.
+      </p>
+
+      <form onsubmit="handleRegisterForm(event, 'pg')" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">PG Name</label>
+          <input type="text" required placeholder="e.g. Sunrise Luxury PG"
+            class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:border-orange-500 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">City & Locality</label>
+          <input type="text" required placeholder="e.g. Koramangala, Bengaluru"
+            class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:border-orange-500 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Monthly Rent Range</label>
+          <input type="text" required placeholder="e.g. ₹ 8,000 - ₹ 12,000"
+            class="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:border-orange-500 outline-none" />
+        </div>
+        <button type="submit"
+          class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow-lg transition-colors mt-2">
+          Submit PG Listing
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    class="fixed bottom-8 right-8 z-[90] w-12 h-12 rounded-full bg-orange-500 text-white shadow-xl flex items-center justify-center text-xl hover:bg-orange-600 transition-all opacity-0 invisible translate-y-4"
+    aria-label="Scroll to top">
+    ↑
+  </button>
+
+  <!-- JavaScript Engine -->
+  <script src="app.js"></script>
+</body>
+
+</html>
