@@ -484,3 +484,13 @@ html.light .bg-green-900\/90 span {
   color: #ffffff !important;
 }
 
+/* Tablet view (768px - 1023px): Center 3rd card in second row for Reviews section */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #reviews-container > :nth-child(3):last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 0.75rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
