@@ -409,6 +409,10 @@ html.light a.bg-gradient-to-r * {
   color: #ffffff !important;
 }
 
+html.light .bg-gradient-to-r .text-emerald-900 {
+  color: #064e3b !important;
+}
+
 /* Borders in Light Mode */
 html.light .border-neutral-900,
 html.light .border-neutral-800,

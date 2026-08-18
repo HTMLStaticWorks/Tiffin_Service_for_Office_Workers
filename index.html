@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark" dir="ltr">
 
 <head>
@@ -52,7 +52,7 @@
         🍲
       </div>
       <div class="flex flex-col">
-        <span class="brand-title text-2xl tracking-tight">tiffinshala</span>
+        <span class="brand-title text-2xl tracking-tight">Tiffinshala</span>
       </div>
     </a>
 
@@ -85,6 +85,7 @@
       <a href="#pgs" class="hover:text-orange-400 transition-colors">Find PGs</a>
       <a href="#corporate" class="hover:text-orange-400 transition-colors">Corporate</a>
       <a href="#contact" class="hover:text-orange-400 transition-colors">Contact</a>
+      <a href="#" onclick="openModal('login-modal')" class="hover:text-orange-400 transition-colors">Login</a>
     </nav>
 
     <!-- Header Actions (All Icon-Only Buttons) -->
@@ -107,17 +108,13 @@
       <button onclick="openModal('dashboard-modal')"
         class="hidden xl:flex w-10 h-10 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-base font-black items-center justify-center shadow-lg shadow-orange-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer"
         title="My Dashboard & Tracker">
-        📊
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="9"></rect>
+          <rect x="14" y="3" width="7" height="5"></rect>
+          <rect x="14" y="12" width="7" height="9"></rect>
+          <rect x="3" y="16" width="7" height="5"></rect>
+        </svg>
       </button>
-
-      <!-- 👤 Partner With Us Button (Icon Only) -->
-      <button onclick="openModal('register-kitchen-modal')"
-        class="hidden xl:flex w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 hover:text-orange-400 hover:border-orange-500 text-base font-bold items-center justify-center transition-all cursor-pointer shadow-sm"
-        title="Partner With Us (Register Kitchen)">
-        👤
-      </button>
-
-
 
       <!-- Hamburger Button (Mobile) -->
       <button id="mobile-menu-open"
@@ -143,7 +140,7 @@
         <div
           class="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-sm shadow-lg shadow-orange-500/20">
           🍲</div>
-        <span class="brand-title text-xl">tiffinshala</span>
+        <span class="brand-title text-xl">Tiffinshala</span>
       </div>
       <button id="mobile-menu-close"
         class="w-8 h-8 rounded-lg bg-neutral-900 text-slate-300 flex items-center justify-center text-sm font-bold">
@@ -151,52 +148,65 @@
       </button>
     </div>
 
-    <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
-      <a href="#hero" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
-        Home
-      </a>
-      <a href="#home2" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
-        Home 2
-      </a>
+    <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1 text-slate-200">
+      <details class="group relative flex flex-col items-center">
+        <summary class="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium cursor-pointer list-none w-full">
+          Home
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="flex flex-col w-full mt-1">
+          <a href="#hero" onclick="document.getElementById('mobile-menu-close').click()"
+            class="px-4 py-2 text-center text-sm font-medium hover:text-orange-400 transition-colors">
+            Home 1
+          </a>
+          <a href="#home2" onclick="document.getElementById('mobile-menu-close').click()"
+            class="px-4 py-2 text-center text-sm font-medium hover:text-orange-400 transition-colors">
+            Home 2
+          </a>
+        </div>
+      </details>
       <a href="#about" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        class="flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-neutral-900">
         About
       </a>
-      <a href="#contact" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
-        Contact
-      </a>
       <a href="#how-it-works" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        class="flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-neutral-900">
         How It Works
       </a>
       <a href="#cities" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        class="flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-neutral-900">
         Cities
       </a>
       <a href="#kitchens" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        class="flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-neutral-900">
         Kitchens
       </a>
       <a href="#weekly-specials" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        class="flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-neutral-900">
         Weekly Specials
       </a>
       <a href="#pgs" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        class="flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-neutral-900">
         Find PGs
       </a>
       <a href="#corporate" onclick="document.getElementById('mobile-menu-close').click()"
-        class="flex items-center justify-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-neutral-900">
+        class="flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-neutral-900">
         Corporate
       </a>
-
+      <a href="#contact" onclick="document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-neutral-900">
+        Contact
+      </a>
+      <a href="#" onclick="openModal('login-modal'); document.getElementById('mobile-menu-close').click()"
+        class="flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-neutral-900">
+        Login
+      </a>
     </nav>
 
     <div class="p-4 border-t border-neutral-900 shrink-0 space-y-3">
-      <div class="grid grid-cols-4 gap-2">
+      <div class="grid grid-cols-3 gap-2">
         <button onclick="toggleTheme()"
           class="py-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 text-base font-bold flex items-center justify-center"
           title="Theme">
@@ -210,12 +220,12 @@
         <button onclick="openModal('dashboard-modal'); document.getElementById('mobile-menu-close').click();"
           class="py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-base font-bold flex items-center justify-center shadow-lg"
           title="Dashboard">
-          📊
-        </button>
-        <button onclick="openModal('register-kitchen-modal'); document.getElementById('mobile-menu-close').click();"
-          class="py-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-slate-200 text-base font-bold flex items-center justify-center"
-          title="Register">
-          👤
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="9"></rect>
+            <rect x="14" y="3" width="7" height="5"></rect>
+            <rect x="14" y="12" width="7" height="9"></rect>
+            <rect x="3" y="16" width="7" height="5"></rect>
+          </svg>
         </button>
       </div>
       <button onclick="openModal('register-pg-modal'); document.getElementById('mobile-menu-close').click();"
@@ -259,7 +269,6 @@
             <a href="#kitchens"
               class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold text-sm sm:text-base shadow-xl shadow-orange-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
               <span>View Kitchens</span>
-              <span>→</span>
             </a>
             <button onclick="openModal('dashboard-modal')"
               class="px-6 py-3.5 rounded-xl bg-neutral-900 border border-orange-500/40 text-orange-400 font-extrabold text-sm sm:text-base hover:bg-orange-500 hover:text-white transition-all shadow-lg">
@@ -453,10 +462,10 @@
             class="px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-extrabold uppercase tracking-widest block w-max mx-auto mb-3">
             Simple 4-Step Process
           </span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight lg:inline">
             How Tiffinshala Delivers Happiness
           </h2>
-          <p class="text-xs text-slate-400 mt-2">Zero hassle, zero wasted food. Total flexibility for students, working
+          <p class="text-xs text-slate-400 mt-2 lg:mt-0 lg:ml-2 lg:inline">Zero hassle, zero wasted food. Total flexibility for students, working
             pros, & families.</p>
         </div>
 
@@ -467,7 +476,7 @@
               class="w-12 h-12 rounded-2xl bg-orange-500 text-white font-black text-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               1
             </div>
-            <h3 class="text-base font-bold text-slate-100 mb-2">Pick Your City & Locality</h3>
+            <h3 class="text-base font-bold text-slate-100 mb-2 whitespace-nowrap">Pick Your City & Locality</h3>
             <p class="text-xs text-slate-400 leading-relaxed">Select your city (Delhi, Noida, Gurugram, Bengaluru, etc.)
               and explore verified home kitchens nearby.</p>
           </div>
@@ -478,7 +487,7 @@
               class="w-12 h-12 rounded-2xl bg-amber-500 text-white font-black text-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               2
             </div>
-            <h3 class="text-base font-bold text-slate-100 mb-2">Customize Meal Plan</h3>
+            <h3 class="text-base font-bold text-slate-100 mb-2 whitespace-nowrap">Customize Meal Plan</h3>
             <p class="text-xs text-slate-400 leading-relaxed">Choose single trial meal or start 7/30-day subscription.
               Select Lunch, Dinner, or Both!</p>
           </div>
@@ -489,7 +498,7 @@
               class="w-12 h-12 rounded-2xl bg-emerald-600 text-white font-black text-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               3
             </div>
-            <h3 class="text-base font-bold text-slate-100 mb-2">Manage on Dashboard</h3>
+            <h3 class="text-base font-bold text-slate-100 mb-2 whitespace-nowrap">Manage on Dashboard</h3>
             <p class="text-xs text-slate-400 leading-relaxed">Pause lunch or dinner with a single click whenever you
               travel. Unused meals auto-roll over!</p>
           </div>
@@ -500,7 +509,7 @@
               class="w-12 h-12 rounded-2xl bg-purple-600 text-white font-black text-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               4
             </div>
-            <h3 class="text-base font-bold text-slate-100 mb-2">Hygienic Express Delivery</h3>
+            <h3 class="text-base font-bold text-slate-100 mb-2 whitespace-nowrap">Hygienic Express Delivery</h3>
             <p class="text-xs text-slate-400 leading-relaxed">Hot, non-oily insulated tiffin delivered straight to your
               home, office desk, or PG room.</p>
           </div>
@@ -511,7 +520,7 @@
           class="p-6 rounded-2xl bg-gradient-to-r from-black via-neutral-950 to-black border border-orange-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div class="space-y-1 text-center md:text-left">
             <span
-              class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+              class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-900 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
               Try It Live
             </span>
             <h4 class="text-lg font-bold text-white">Test the 1-Click Meal Pause Simulator</h4>
@@ -519,14 +528,14 @@
               subscription balance auto-extends.</p>
           </div>
 
-          <div class="flex items-center gap-3">
+          <div class="flex flex-col xl:flex-row items-center gap-3 w-full md:w-auto mt-4 md:mt-0">
             <button onclick="toggleMealPause('lunch'); showToast('Simulated Pause/Resume! Your validity updated.')"
-              class="px-5 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs rounded-xl shadow-lg transition-transform active:scale-95">
+              class="w-full xl:w-auto px-2 sm:px-5 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold text-[11px] sm:text-xs rounded-xl shadow-lg transition-transform active:scale-95 whitespace-nowrap">
               ⏸️ Simulate Pause Tomorrow's Lunch
             </button>
             <button onclick="openModal('dashboard-modal')"
-              class="px-4 py-3 bg-neutral-900 border border-neutral-800 text-slate-200 font-bold text-xs rounded-xl hover:bg-neutral-800">
-              Open Full Dashboard →
+              class="w-full xl:w-auto px-2 sm:px-4 py-3 bg-neutral-900 border border-neutral-800 text-slate-200 font-bold text-[11px] sm:text-xs rounded-xl hover:bg-neutral-800 whitespace-nowrap">
+              Open Full Dashboard
             </button>
           </div>
         </div>
@@ -550,7 +559,7 @@
         </div>
 
         <!-- Horizontal Scrollable City Chips -->
-        <div id="cities-scroll-container" class="flex items-center gap-4 overflow-x-auto pb-4 hide-scrollbar mb-10">
+        <div id="cities-scroll-container" class="flex flex-wrap justify-center items-center gap-4 md:gap-6 pb-4 mb-10">
           <!-- Rendered via app.js -->
         </div>
 
@@ -727,9 +736,9 @@
               </div>
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="flex flex-col sm:flex-row items-center sm:justify-start gap-4">
               <button onclick="openModal('register-kitchen-modal')"
-                class="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold text-xs rounded-xl shadow-lg hover:opacity-90">
+                class="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold text-xs rounded-xl shadow-lg hover:opacity-90 whitespace-nowrap">
                 Get Corporate Quote →
               </button>
               <span class="text-xs text-slate-400">📞 Priority Helpline: +91 98765 43210</span>
@@ -1081,12 +1090,12 @@
       <button onclick="closeModal('register-kitchen-modal')"
         class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
 
-      <div class="flex items-center justify-center gap-2 mb-4 mt-2">
+      <a href="#hero" onclick="closeModal('register-kitchen-modal')" class="flex items-center justify-center gap-2 mb-4 mt-2 hover:opacity-80 transition-opacity">
         <div
           class="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-sm shadow-lg shadow-orange-500/20">
           🍲</div>
-        <span class="brand-title text-xl">tiffinshala</span>
-      </div>
+        <span class="brand-title text-xl">Tiffinshala</span>
+      </a>
       <h3 class="text-xl font-extrabold text-slate-100 mb-1 text-center">Register Your Kitchen 👨‍🍳</h3>
       <p class="text-xs text-slate-400 mb-5 text-center">Start delivering homestyle tiffins to thousands of daily
         subscribers near you.</p>
@@ -1136,12 +1145,12 @@
       <button onclick="closeModal('login-modal')"
         class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
 
-      <div class="flex items-center justify-center gap-2 mb-4 mt-2">
+      <a href="#hero" onclick="closeModal('login-modal')" class="flex items-center justify-center gap-2 mb-4 mt-2 hover:opacity-80 transition-opacity">
         <div
           class="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-sm shadow-lg shadow-orange-500/20">
           🍲</div>
-        <span class="brand-title text-xl">tiffinshala</span>
-      </div>
+        <span class="brand-title text-xl">Tiffinshala</span>
+      </a>
       <h3 class="text-xl font-extrabold text-slate-100 mb-1 text-center">Welcome Back 👋</h3>
       <p class="text-xs text-slate-400 mb-5 text-center">Login to your account to continue.</p>
 
@@ -1182,12 +1191,12 @@
       <button onclick="closeModal('register-pg-modal')"
         class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
 
-      <div class="flex items-center justify-center gap-2 mb-4 mt-2">
+      <a href="#hero" onclick="closeModal('register-pg-modal')" class="flex items-center justify-center gap-2 mb-4 mt-2 hover:opacity-80 transition-opacity">
         <div
           class="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-sm shadow-lg shadow-orange-500/20">
           🍲</div>
-        <span class="brand-title text-xl">tiffinshala</span>
-      </div>
+        <span class="brand-title text-xl">Tiffinshala</span>
+      </a>
       <h3 class="text-xl font-extrabold text-slate-100 mb-1 text-center">Register PG / Co-Living 🏢</h3>
       <p class="text-xs text-slate-400 mb-5 text-center">List your room with optional meal integration on Tiffinshala.
       </p>

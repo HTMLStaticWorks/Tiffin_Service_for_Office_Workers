@@ -539,7 +539,6 @@ function toggleTheme() {
     document.documentElement.classList.remove('light');
   }
   updateThemeButtonsUI();
-  showToast(`Theme switched to ${state.theme.toUpperCase()} mode`);
 }
 
 function updateThemeButtonsUI() {
@@ -564,10 +563,8 @@ function toggleRtl() {
   localStorage.setItem('tiffin_rtl', state.isRtl ? 'true' : 'false');
   if (state.isRtl) {
     document.documentElement.setAttribute('dir', 'rtl');
-    showToast('Switched layout to Right-To-Left (RTL) mode ⇄');
   } else {
     document.documentElement.setAttribute('dir', 'ltr');
-    showToast('Switched layout to Left-To-Right (LTR) mode ⇄');
   }
   updateRtlButtonsUI();
 }
@@ -592,7 +589,7 @@ function renderCities() {
       <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full flex flex-col items-center justify-center overflow-hidden transition-all duration-300 group-hover:scale-105 group-hover:border-2 group-hover:border-orange-500 shadow-md ${state.currentCity === city.name ? 'bg-orange-500/20 border-2 border-orange-500 text-orange-400' : 'bg-slate-800/80 border border-slate-700 text-slate-200'}">
         ${city.id === 'all' 
           ? `<span class="text-3xl sm:text-4xl mb-1">${city.icon}</span><span class="text-[10px] font-bold tracking-wider uppercase opacity-75">${city.badge}</span>` 
-          : `<img src="images/${city.name}.png" alt="${city.name}" class="w-full h-full object-cover" />`
+          : `<img src="images/${city.name}.png" alt="${city.name}" class="w-full h-full object-cover" onerror="this.outerHTML='<span class=\\'text-4xl\\'>${city.icon}</span>'" />`
         }
       </div>
       <span class="text-sm font-semibold text-center ${state.currentCity === city.name ? 'text-orange-500' : 'text-slate-300'}">${city.name}</span>
@@ -669,7 +666,7 @@ function renderKitchens() {
           <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> ${k.dietaryLabel}
         </span>
         <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-slate-300">
-          <span class="flex items-center gap-1 bg-black/60 px-2 py-1 rounded-md backdrop-blur-sm">
+          <span class="flex items-center gap-1 bg-black/60 px-2 py-1 rounded-md backdrop-blur-sm !text-white">
             📍 ${k.locality}
           </span>
           <span class="flex items-center gap-1 bg-black/60 px-2 py-1 rounded-md backdrop-blur-sm text-emerald-400 font-bold">
@@ -712,7 +709,7 @@ function renderKitchens() {
 
           <button 
             onclick="openKitchenModal(${k.id})" 
-            class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-xl transition-all shadow-md active:scale-95 flex items-center gap-1.5"
+            class="px-2.5 sm:px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-[10px] sm:text-xs font-bold rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0"
           >
             View Menu & Order →
           </button>
@@ -798,7 +795,7 @@ function renderWeeklySpecials() {
         <span class="absolute top-2 left-2 px-3 py-1 bg-orange-500 text-white text-[10px] font-black uppercase rounded-md shadow">
           ${spec.day} Special
         </span>
-        <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-black/70 backdrop-blur-sm text-slate-300 text-[10px] font-semibold rounded">
+        <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-black/70 backdrop-blur-sm !text-white text-[10px] font-semibold rounded">
           🔥 ${spec.nutrition}
         </span>
       </div>
@@ -869,10 +866,10 @@ function renderFaqs() {
     <div class="border border-slate-700/70 rounded-xl overflow-hidden bg-slate-800/40 transition-colors">
       <button 
         onclick="toggleFaq(${index})" 
-        class="w-full px-5 py-4 text-left flex items-center justify-between font-bold text-white text-sm hover:text-orange-400 transition-colors"
+        class="w-full px-5 py-4 text-start flex items-center justify-between gap-4 font-bold text-white text-sm hover:text-orange-400 transition-colors"
       >
         <span>${faq.q}</span>
-        <span id="faq-icon-${index}" class="text-sm font-mono text-orange-400 transition-transform duration-200">▼</span>
+        <span id="faq-icon-${index}" class="text-sm font-mono text-orange-400 transition-transform duration-200 shrink-0">▼</span>
       </button>
       <div id="faq-ans-${index}" class="hidden px-5 pb-4 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-700/30 pt-3">
         ${faq.a}
