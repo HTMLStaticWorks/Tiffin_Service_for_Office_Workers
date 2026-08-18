@@ -448,3 +448,33 @@ html.light .border-slate-700 {
     width: calc(25% - 1.125rem);
   }
 }
+
+/* Order History Card Overrides - Preserve text colors & dark card background in Bright/Light Mode */
+html.light .order-history-card,
+.order-history-card {
+  background-color: #1e293b !important;
+  border-color: rgba(51, 65, 85, 0.6) !important;
+}
+
+html.light .order-history-card h5,
+.order-history-card h5 {
+  color: #ffffff !important;
+}
+
+html.light .order-history-card .text-slate-400,
+html.light .order-history-card p.text-slate-400,
+html.light .order-history-card span.text-slate-400,
+.order-history-card .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+html.light .order-history-card .text-emerald-400,
+.order-history-card .text-emerald-400 {
+  color: #34d399 !important;
+}
+
+html.light .order-history-card .text-orange-400,
+.order-history-card .text-orange-400 {
+  color: #fb923c !important;
+}
+

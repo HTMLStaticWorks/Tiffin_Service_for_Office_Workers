@@ -990,7 +990,7 @@ function renderDashboardContent() {
   } else if (state.activeDashboardTab === 'history') {
     container.innerHTML = `
       <div class="space-y-3 animate-fade-in">
-        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-between">
+        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-between order-history-card">
           <div>
             <span class="text-xs text-slate-400 font-mono">INV-2026-0814</span>
             <h5 class="text-sm font-bold text-white">Annapurna Kitchen (1 Month Veg Subscription)</h5>
@@ -1002,7 +1002,7 @@ function renderDashboardContent() {
           </div>
         </div>
 
-        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-between">
+        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-between order-history-card">
           <div>
             <span class="text-xs text-slate-400 font-mono">INV-2026-0720</span>
             <h5 class="text-sm font-bold text-white">Maa Ki Rasoi (Executive Rajma Thali)</h5>
