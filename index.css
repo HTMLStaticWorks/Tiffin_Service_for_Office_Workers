@@ -478,3 +478,9 @@ html.light .order-history-card .text-orange-400,
   color: #fb923c !important;
 }
 
+/* Dietary Green Badge Text Override in Light/Bright Mode */
+html.light .bg-green-900\/90,
+html.light .bg-green-900\/90 span {
+  color: #ffffff !important;
+}
+

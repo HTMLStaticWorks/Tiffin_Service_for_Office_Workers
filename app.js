@@ -662,7 +662,7 @@ function renderKitchens() {
         <span class="absolute top-3 left-3 px-3 py-1 bg-slate-900/80 backdrop-blur-md border border-slate-700/60 rounded-full text-xs font-semibold text-orange-400 shadow">
           ${k.tag}
         </span>
-        <span class="absolute top-3 right-3 px-2.5 py-1 bg-green-900/90 border border-green-700 rounded-full text-xs font-bold text-green-300 flex items-center gap-1">
+        <span class="absolute top-3 right-3 px-2.5 py-1 bg-green-900/90 border border-green-700 rounded-full text-xs font-bold !text-white flex items-center gap-1">
           <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> ${k.dietaryLabel}
         </span>
         <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-slate-300">
@@ -711,7 +711,7 @@ function renderKitchens() {
             onclick="openKitchenModal(${k.id})" 
             class="px-2.5 sm:px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-[10px] sm:text-xs font-bold rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0"
           >
-            View Menu & Order →
+            View Menu & Order
           </button>
         </div>
       </div>
@@ -839,14 +839,16 @@ function renderReviews() {
   if (!container) return;
 
   container.innerHTML = REVIEWS.map(r => `
-    <div class="p-6 rounded-2xl bg-slate-800/60 border border-slate-700/60 shadow-lg flex flex-col justify-between">
-      <div class="text-amber-400 text-sm mb-3 text-center">
-        ${'⭐'.repeat(r.rating)}
+    <div class="p-6 rounded-2xl bg-slate-800/60 border border-slate-700/60 shadow-lg flex flex-col justify-between h-full">
+      <div class="flex-1 flex flex-col justify-start text-center mb-6">
+        <div class="text-amber-400 text-sm mb-3 text-center">
+          ${'⭐'.repeat(r.rating)}
+        </div>
+        <p class="text-sm text-slate-300 italic leading-relaxed text-center">
+          "${r.comment}"
+        </p>
       </div>
-      <p class="text-sm text-slate-300 italic leading-relaxed mb-6">
-        "${r.comment}"
-      </p>
-      <div class="flex flex-col items-center justify-center gap-2 pt-4 border-t border-slate-700/40 text-center">
+      <div class="flex flex-col items-center justify-center gap-2 pt-4 border-t border-slate-700/40 text-center shrink-0">
         <img src="${r.avatar}" alt="${r.name}" class="w-10 h-10 rounded-full object-cover border border-orange-500/40" />
         <div>
           <h4 class="text-sm font-bold text-slate-100">${r.name}</h4>
