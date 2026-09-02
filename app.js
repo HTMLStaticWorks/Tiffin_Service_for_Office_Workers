@@ -586,10 +586,14 @@ function renderCities() {
       onclick="selectCity('${city.name}')" 
       class="city-chip group flex flex-col items-center gap-2 shrink-0 cursor-pointer transition-all duration-200"
     >
-      <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full flex flex-col items-center justify-center overflow-hidden transition-all duration-300 group-hover:scale-105 group-hover:border-2 group-hover:border-orange-500 shadow-md ${state.currentCity === city.name ? 'bg-orange-500/20 border-2 border-orange-500 text-orange-400' : 'bg-slate-800/80 border border-slate-700 text-slate-200'}">
+      <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full flex flex-col items-center justify-center overflow-hidden transition-all duration-300 group-hover:scale-105 group-hover:border-2 group-hover:border-orange-500 shadow-md ${
+        city.id === 'all' 
+          ? 'bg-white border border-slate-200' 
+          : (state.currentCity === city.name ? 'bg-orange-500/20 border-2 border-orange-500 text-orange-400' : 'bg-slate-800/80 border border-slate-700 text-slate-200')
+      }">
         ${city.id === 'all' 
-          ? `<span class="text-3xl sm:text-4xl mb-1">${city.icon}</span><span class="text-[10px] font-bold tracking-wider uppercase opacity-75">${city.badge}</span>` 
-          : `<img src="images/${city.name}.png" alt="${city.name}" class="w-full h-full object-cover" onerror="this.outerHTML='<span class=\\'text-4xl\\'>${city.icon}</span>'" />`
+          ? `<div class="flex flex-col items-center justify-center"><div class="text-rose-500 text-3xl sm:text-4xl mb-1 mt-2">📍</div><span class="text-[9px] font-bold tracking-wider uppercase text-slate-700">${city.badge}</span></div>` 
+          : `<img src="images/${city.name}.png" alt="${city.name}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://loremflickr.com/400/400/indian,food,${city.name.toLowerCase()}';" />`
         }
       </div>
       <span class="text-sm font-semibold text-center ${state.currentCity === city.name ? 'text-orange-500' : 'text-slate-300'}">${city.name}</span>
@@ -651,7 +655,7 @@ function renderKitchens() {
 
   container.innerHTML = filtered.map(k => `
     <div class="food-card rounded-2xl overflow-hidden shadow-lg flex flex-col group animate-fade-in">
-      <div class="relative h-48 overflow-hidden bg-slate-900">
+      <div class="relative h-64 sm:h-72 overflow-hidden bg-slate-900">
         <img 
           src="${k.image}" 
           alt="${k.name}" 
@@ -734,7 +738,7 @@ function renderPgs() {
 
   container.innerHTML = filtered.map(pg => `
     <div class="food-card rounded-2xl overflow-hidden shadow-lg flex flex-col group animate-fade-in">
-      <div class="relative h-44 md:h-60 xl:h-48 overflow-hidden bg-slate-900">
+      <div class="relative h-56 md:h-64 xl:h-56 overflow-hidden bg-slate-900">
         <img src="${pg.image}" alt="${pg.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
         <div class="absolute top-3 left-3 right-3 flex flex-wrap justify-between gap-2">
@@ -790,7 +794,7 @@ function renderWeeklySpecials() {
 
   container.innerHTML = WEEKLY_SPECIALS_FULL.map(spec => `
     <div class="food-card rounded-2xl overflow-hidden p-4 flex flex-col group animate-fade-in sm:last:col-span-2 sm:last:w-[calc(50%-0.75rem)] sm:last:mx-auto lg:last:col-span-1 lg:last:w-full lg:last:mx-0">
-      <div class="relative h-44 rounded-xl overflow-hidden mb-3">
+      <div class="relative h-56 rounded-xl overflow-hidden mb-3 bg-slate-900">
         <img src="${spec.image}" alt="${spec.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         <span class="absolute top-2 left-2 px-3 py-1 bg-orange-500 text-white text-[10px] font-black uppercase rounded-md shadow">
           ${spec.day} Special
@@ -865,15 +869,15 @@ function renderFaqs() {
   if (!container) return;
 
   container.innerHTML = FAQS.map((faq, index) => `
-    <div class="border border-slate-700/70 rounded-xl overflow-hidden bg-slate-800/40 transition-colors">
+    <div class="border-b border-slate-200 overflow-hidden bg-transparent transition-colors">
       <button 
         onclick="toggleFaq(${index})" 
-        class="w-full px-5 py-4 text-start flex items-center justify-between gap-4 font-bold text-white text-sm hover:text-orange-400 transition-colors"
+        class="w-full py-4 text-start flex items-center justify-between gap-4 font-bold text-slate-900 text-sm sm:text-base hover:text-orange-500 transition-colors"
       >
         <span>${faq.q}</span>
-        <span id="faq-icon-${index}" class="text-sm font-mono text-orange-400 transition-transform duration-200 shrink-0">▼</span>
+        <span id="faq-icon-${index}" class="text-sm font-mono text-orange-500 transition-transform duration-200 shrink-0">▼</span>
       </button>
-      <div id="faq-ans-${index}" class="hidden px-5 pb-4 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-700/30 pt-3">
+      <div id="faq-ans-${index}" class="hidden pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed pt-1">
         ${faq.a}
       </div>
     </div>
