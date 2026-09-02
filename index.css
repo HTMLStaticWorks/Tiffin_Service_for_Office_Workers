@@ -341,6 +341,18 @@ html.light nav a:hover {
   color: #ea580c !important;
 }
 
+/* Fix dropdown and drawer link hover states in light mode */
+html.light .hover\:bg-neutral-800:hover,
+html.light .hover\:bg-neutral-900:hover {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .group\/nav1:hover .group-hover\/nav1\:text-orange-400,
+html.light .group\/nav2:hover .group-hover\/nav2\:text-orange-400,
+html.light .group:hover .group-hover\:text-orange-400 {
+  color: #ea580c !important;
+}
+
 /* All Cards, Modals, & Containers in Light Mode */
 html.light .food-card,
 html.light .glass-panel,
@@ -380,7 +392,8 @@ html.light #how-it-works .p-6.rounded-2xl h4 {
   color: #9a3412 !important;
 }
 
-html.light #how-it-works .p-6.rounded-2xl p {
+html.light #how-it-works .p-6.rounded-2xl p,
+html.light #how-it-works .p-6.rounded-2xl span {
   color: #c2410c !important;
 }
 
